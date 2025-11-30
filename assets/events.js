@@ -48,9 +48,30 @@ const events = [
   },
   {
     date: "2025-05-02",
-    title: "Poster @ NAACL 2025",
+    title: "Attended NAACL 2025",
     description: "Presented our research on <a href='https://arxiv.org/abs/2411.12405'>evaluating the prompt steerability</a> of LLMs.",
     type: "normal",
+  },
+  {
+    date: "2025-04-01",
+    title: "Evaluating prompt steerability",
+    description: " ",
+    type: "paper",
+    link: ""
+  },
+  {
+    date: "2025-03-01",
+    title: "Localizing persona representations",
+    description: "AIES and INTERPLAY.",
+    type: "paper",
+    link: ""
+  },
+  {
+    date: "2025-02-01",
+    title: "Agentic systems theory",
+    description: " ",
+    type: "paper",
+    link: ""
   },
 ];
 
@@ -73,14 +94,18 @@ function renderTimeline() {
   // Get today's date (normalized to midnight)
   const today = new Date();
   today.setHours(0, 0, 0, 0);
+  
+  // End of today (for future event comparison)
+  const endOfToday = new Date();
+  endOfToday.setHours(23, 59, 59, 999);
 
-  // Filter out future-tense events that have already passed
+  // Filter out future-tense events that have already passed (after end of their day)
   const filteredEvents = events.filter(event => {
-    const eventDate = new Date(event.date + 'T00:00:00');
+    const eventEndOfDay = new Date(event.date + 'T23:59:59');
     // Keep the event if:
     // - It's not marked as a future event, OR
-    // - It IS a future event and its date hasn't passed yet
-    return !event.future || eventDate >= today;
+    // - It IS a future event and its date hasn't fully passed yet (end of day)
+    return !event.future || eventEndOfDay >= today;
   });
 
   // Sort events by date (newest first)
@@ -88,16 +113,26 @@ function renderTimeline() {
     new Date(b.date) - new Date(a.date)
   );
 
-  // Check if there are any future events remaining
+  // Check if there are any future events remaining (event date is today or later)
   const hasFutureEvents = sortedEvents.some(event => {
     const eventDate = new Date(event.date + 'T00:00:00');
     return eventDate >= today;
+  });
+
+  // Find the most recent tagged event in the past to mark as "new"
+  const tagTypes = ['paper', 'code', 'talk'];
+  const mostRecentTaggedPastEvent = sortedEvents.find(event => {
+    const eventDate = new Date(event.date + 'T00:00:00');
+    const isPast = eventDate < today;
+    const hasTag = tagTypes.includes(event.type);
+    return isPast && hasTag;
   });
 
   let todayMarkerInserted = false;
 
   sortedEvents.forEach((event, index) => {
     const eventDate = new Date(event.date + 'T00:00:00');
+    const isFutureEvent = eventDate >= today;
     
     // Insert "Today" marker only if there are future events
     if (hasFutureEvents && !todayMarkerInserted && eventDate < today) {
@@ -108,9 +143,19 @@ function renderTimeline() {
       todayMarkerInserted = true;
     }
 
+    // Determine the display type (override to "new" for most recent tagged past event)
+    let displayType = event.type;
+    const isMostRecentTagged = mostRecentTaggedPastEvent && 
+      event.date === mostRecentTaggedPastEvent.date && 
+      event.title === mostRecentTaggedPastEvent.title;
+    
+    if (isMostRecentTagged) {
+      displayType = 'new';
+    }
+
     // Determine if this is a highlighted item (has a tag type)
-    const isHighlight = ['paper', 'code', 'new', 'talk', 'highlight'].includes(event.type);
-    const hasTag = ['paper', 'code', 'new', 'talk'].includes(event.type);
+    const isHighlight = ['paper', 'code', 'new', 'talk', 'highlight'].includes(displayType);
+    const hasTag = ['paper', 'code', 'new', 'talk'].includes(displayType);
 
     // Build the event HTML
     const itemDiv = document.createElement('div');
@@ -129,20 +174,25 @@ function renderTimeline() {
         'new': 'New',
         'talk': 'Talk'
       };
-      tagHTML = `<span class="tag ${event.type}">${tagLabels[event.type]}</span>`;
+      tagHTML = `<span class="tag ${displayType}">${tagLabels[displayType]}</span>`;
     }
+
+    // Add clock icon for future events
+    const dateHTML = isFutureEvent 
+      ? `<i class="fa-regular fa-clock"></i> ${formatDate(event.date)}`
+      : formatDate(event.date);
 
     if (isHighlight) {
       itemDiv.innerHTML = `
         <div class="timeline-box">
-          <div class="timeline-date">${formatDate(event.date)}</div>
+          <div class="timeline-date">${dateHTML}</div>
           <h3 class="timeline-title">${tagHTML}${titleHTML}</h3>
           <p class="timeline-description">${event.description}</p>
         </div>
       `;
     } else {
       itemDiv.innerHTML = `
-        <span class="timeline-date">${formatDate(event.date)}</span>
+        <span class="timeline-date">${dateHTML}</span>
         <h3 class="timeline-title">${titleHTML}</h3>
         <p class="timeline-description">${event.description}</p>
       `;

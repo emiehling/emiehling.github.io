@@ -8,12 +8,12 @@
    CSS CUSTOM PROPERTIES (Light Mode - Default)
    ===================================================== */
 :root {
-  --bg-primary: #F7F3EA;
+  --bg-primary: #faf8f2;
   --bg-secondary: #fff;
   --bg-inset: #f0ede6;
   --bg-hover: #fff;
   
-  --text-primary: #4d4d4d;
+  --text-primary: #222;
   --text-secondary: #727272;
   --text-muted: #999;
   
@@ -42,12 +42,12 @@
    DARK MODE
    ===================================================== */
 [data-theme="dark"] {
-  --bg-primary: #1a1a20;
+  --bg-primary: #1a1a1a;
   --bg-secondary: #242424;
   --bg-inset: #1e1e1e;
   --bg-hover: #2a2a2a;
   
-  --text-primary: #d8d8d8;
+  --text-primary: #e8e8e8;
   --text-secondary: #a0a0a0;
   --text-muted: #707070;
   
@@ -443,6 +443,12 @@ footer p {
   margin-bottom: 4px;
   float: right;
   margin-top: 2px;
+}
+
+.timeline-date i {
+  margin-right: 4px;
+  opacity: 0.8;
+  font-size: 0.85em
 }
 
 .timeline-title {
