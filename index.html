@@ -1,185 +1,160 @@
 <!DOCTYPE html>
-<!--
-    Plain-Academic by Vasilios Mavroudis
-    Released under the Simplified BSD License/FreeBSD (2-clause) License.
-    https://github.com/mavroudisv/plain-academic
--->
+<html>
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>Erik Miehling</title>
+    <link rel="stylesheet" href="assets/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <!-- Set theme immediately to prevent flash -->
+    <script>
+      (function() {
+        const theme = localStorage.getItem('theme-preference') || 
+          (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.setAttribute('data-theme', theme);
+      })();
+    </script>
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1>Erik Miehling</h1>
 
-<html lang="en">
-<head>
-  <title>Erik Miehling | IBM Research</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-127550097-1"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
+        <img src="assets/images/profile.jpeg" alt="Profile photo" class="profile-photo">
 
-    gtag('config', 'UA-127550097-1');
-  </script>
-  <link href='https://fonts.googleapis.com/css?family=Oswald:700' rel='stylesheet' type='text/css'>
-  <style> ul li {margin-top: 5px; margin-bottom: 5px;} </style>
-</head>
-<body>
+        <p class="sidebar-email">erik.miehling@ibm.com</p>
 
+        <ul class="sidebar-links">
+          <li>
+            <a href="assets/miehling_resume.pdf">
+              <i class="fa-regular fa-file fa-fw"></i>
+              <span>Resume</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://scholar.google.com/citations?user=mmd29pMAAAAJ&hl=en">
+              <i class="fa-brands fa-google-scholar fa-fw"></i>
+              <span>Google Scholar</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://github.com/emiehling">
+              <i class="fa-brands fa-github fa-fw"></i>
+              <span>GitHub</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://www.linkedin.com/in/erik-miehling/">
+              <i class="fa-brands fa-linkedin fa-fw"></i>
+              <span>LinkedIn</span>
+            </a>
+          </li>
+          <li>
+            <a href="https://x.com/erikmiehling">
+              <i class="fa-brands fa-x-twitter fa-fw"></i>
+              <span>X page</span>
+            </a>
+          </li>
+        </ul>
 
-<!-- Navigation -->
-    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-        </div>
+        <footer>
+          <div class="theme-toggle-wrapper">
+            <span class="theme-toggle-icon sun"><i class="fa-solid fa-sun"></i></span>
+            <button class="theme-toggle" aria-label="Toggle dark mode" aria-checked="false" role="switch"></button>
+            <span class="theme-toggle-icon moon"><i class="fa-solid fa-moon"></i></span>
+          </div>
+          <p><small>Theme forked from <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+        </footer>
+      </header>
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-          <ul class="nav navbar-nav">
-            <li><a href="index.html">Home</a></li>
-            <!--<li><a href="research.html">Research</a></li>-->
-            <li><a href="publications.html">Publications</a></li> 
-          </ul>
-        </div>
+      <div class="content-area">
+        <article class="about-section">
+          <h1>About</h1>
+
+          <p>I am a research scientist at <a href="https://research.ibm.com">IBM Research</a> in the <a href="https://research.ibm.com/topics/trustworthy-ai">trustworthy AI</a> group. My primary research interests lie in the controllability/steerability/safety of generative models, multi-agent coordination and alignment, and the dynamics of human-AI interaction.</p>
+
+          <p>Prior to joining IBM Research I was a postdoctoral research associate in the <a href="https://csl.illinois.edu">Coordinated Science Lab</a> at the University of Illinois at Urbana–Champaign where I worked with <a href="http://tamerbasar.csl.illinois.edu">Tamer Başar</a> and <a href="https://aerospace.illinois.edu/directory/profile/langbort">Cedric Langbort</a> on problems in reinforcement learning, control, and games. I obtained my PhD in electrical engineering and computer science at the University of Michigan under <a href="https://teneketzis.engin.umich.edu">Demos Teneketzis</a>.</p>
+
+          <h2>Model steerability and safety</h2>
+
+          <p>I share the idea that model steerability (i.e., controllability) is a more direct and sustainable target for AI safety than model alignment, in that it forces us to focus on questions of how corrigibility/oversight can be preserved as model capabilities grow. Understanding how steerable models are toward particular behaviors also informs which model capabilities should be constrained. See Kush Varshney's <a href="https://research.ibm.com/blog/map-measure-manage-gen-ai">interview</a> and Helen Toner's <a href="https://helentoner.substack.com/p/the-core-challenge-of-ai-alignment">post</a> for more on these ideas.</p>
+
+          <p>To better understand model steerability as a whole, I've been leading the development of the <a href="https://ibm.github.io/AISteer360/">AI Steerability 360 toolkit</a>. The toolkit allows for the design of new steering methods, the analysis of how much a model can be controlled (or steered), and the (empirical) study of any unintended side effects that were introduced through steering (even under good intentions).</p>
+
+          <!-- <p>Check out our the technical report on the toolkit </p> -->
+
+          <h2>Multi-agent systems</h2>
+
+          <p>Another focus area of my research concerns multi-agent systems, specifically how we can effectively monitor if collectives of LLM-based agents are behaving as intended, and what we can do to intervene if their goals start to drift. Given that agentic AI systems are being deployed in environments that interface with humans, the tools used to understand these systems must draw upon theory from domains beyond engineering. Check out <a href="https://fast-workshop.github.io">our workshop</a> for relevant discussions.</p>
+
+          <br />
+          <br />
+
+        </article>
+
+        <aside class="news-section">
+          <h1>News & updates</h1>
+
+          <div class="timeline">
+            <!-- timeline content is dynamically generated by events.js -->
+          </div>
+        </aside>
+
+        <article class="publications-section">
+
+          <h1>Selected publications</h1>
+            <br />
+
+            <p><strong>Agentic AI Needs a Systems Theory</strong><br>
+            E Miehling, KN Ramamurthy, KR Varshney, M Riemer, D Bouneffouf, JT Richards, A Dhurandhar, EM Daly, M Hind, P Sattigeri, D Wei, A Rawat, J Gajcin, W Geyer<br>
+            <small>Preprint 2025 | <a href="https://arxiv.org/abs/2503.00237">paper</a></small></p>
+
+            <p><strong>Evaluating the Prompt Steerability of Large Language Models</strong><br>
+            E Miehling, M Desmond, KN Ramamurthy, EM Daly, KR Varshney, E Farchi, P Dognin, J Rios, D Bouneffouf, M Liu, P Sattigeri<br>
+            <small>NAACL 2025 | <a href="https://arxiv.org/abs/2411.12405">paper</a> | <a href="https://github.com/IBM/prompt-steering">code</a></small></p>
+
+            <p><strong>Programming Refusal with Conditional Activation Steering</strong><br>
+            BW Lee, I Padhi, KN Ramamurthy, E Miehling, P Dognin, M Nagireddy, A Dhurandhar<br>
+            <small>ICLR 2025 Spotlight | <a href="https://arxiv.org/abs/2409.05907">paper</a> | <a href="https://github.com/IBM/activation-steering">code</a></small></p>
+
+            <p><strong>Language Models in Dialogue: Conversational Maxims for Human-AI Interactions</strong><br>
+            E Miehling, M Nagireddy, P Sattigeri, EM Daly, D Piorkowski, JT Richards<br>
+            <small>EMNLP 2024 Findings | <a href="https://arxiv.org/abs/2403.15115">paper</a></small></p>
+
+            <p><strong>Information State Embedding in Partially Observable Cooperative Multi-Agent Reinforcement Learning</strong><br>
+            W Mao, K Zhang, E Miehling, T Başar<br>
+            <small>IEEE CDC 2020 | <a href="https://arxiv.org/abs/2004.01098">paper</a></small></p>
+
+            <p><strong>Non-Cooperative Inverse Reinforcement Learning</strong><br>
+            X Zhang, K Zhang, E Miehling, T Başar<br>
+            <small>NeurIPS 2019 | <a href="https://arxiv.org/abs/1911.04220">paper</a></small></p>
+
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+            <br/>
+
+        </article>
       </div>
-    </nav>
-  
-  <br>
-  <br>
-  <br>
-  <br>
-
-  <!-- Page Content -->
-    <div class="container">
-
-        <div class="row">
-
-            <!-- Entries Column -->
-            <div class="col-md-8" style="height: 100%;">
-                
-                <!-- Main Image -->
-                <a href="http://olsenphotography.ca" target="_blank"><img class="img-responsive" src="photo_2.jpg" title="A photo of my home province in Canada. Photo taken by my dad, check him out: http://olsenphotography.ca"></a><br>
-                
-                <div style="margin-top:3%; text-align:justify;">                
-                <p> I am a research scientist at <a href="https://research.ibm.com">IBM Research</a> in the <a href="https://research.ibm.com/topics/trustworthy-ai">trustworthy AI</a> group. My primary research interests lie in multi-agent coordination and alignment, fairness of learning algorithms in sequential decision environments, and human-AI interaction (e.g., via language models).</p>
-					
-                <p>Prior to joining IBM Research I was a postdoctoral research associate in the <a href="https://csl.illinois.edu">Coordinated Science Lab</a> at the University of Illinois at Urbana–Champaign where I worked with <a href="http://tamerbasar.csl.illinois.edu">Tamer Başar</a> and <a href="https://aerospace.illinois.edu/directory/profile/langbort">Cedric Langbort</a> on problems in reinforcement learning, control, and games. I obtained my PhD in electrical engineering and computer science at the University of Michigan under <a href="https://teneketzis.engin.umich.edu"">Demos Teneketzis</a>.<!--See <a href="research.html">here</a> for a more detailed description of my research projects.-->
-                </p>
-
-                <br />
-                <br />
-
-                </div>
-            </div> 
-
-            <!-- Contact Info on the Sidebar -->
-            <div class="col-md-4">
-                <div style="font-family: 'Oswald', sans-serif; font-size: 32px;"><b>Erik Miehling</b></div><br>
-                <p><b>erik.miehling at ibm.com</b><br>
-                <p>Research Scientist<br>
-                IBM Research<br>
-                Dublin, Ireland
-                </p>
-            </div>
-            
-            <!-- Links on the Sidebar -->
-            <div class="col-md-4" style="margin-top:1%">
-              <dd><a href="https://scholar.google.com/citations?hl=en&user=mmd29pMAAAAJ">Google Scholar</a></dd> 
-              <!--<dd><a href="#">Twitter</a></dd>-->
-              <dd><a href="http://www.linkedin.com/in/erik-miehling">LinkedIn</a></dd>
-              <dd><a href="files/miehling_resume.pdf">Resume</a></dd>
-              <br>
-              <br>
-            </div>
-            
-            
-            <!-- News & updates -->
-            <div class="col-md-8" style="height: 70vh;">    
-                <h3>News and updates</h3>
-                <ul>
-		  <li>
-                    <strong>[Oct 2024]: </strong>
-                    <ul>
-		      <li>
-			Our paper on evaluating the prompt steerability of LLMs was accepted to the <a href="https://pluralistic-alignment.github.io">pluralistic alignment workshop</a> at NeurIPS 2024. Preprint to appear shortly.
-                      </li>
-		      <li>
-			Our attack atlas paper was accepted to the <a href="https://redteaming-gen-ai.github.io/index.html">red teaming GenAI workshop</a> at NeurIPS 2024. Check out the <a href="https://arxiv.org/abs/2409.15398">preprint</a>. 
-                      </li>
-                      <li>
-			Our <a href="https://arxiv.org/pdf/2403.15115">paper</a> on conversational maxims for human-AI interactions was accepted to EMNLP 2024 Findings!
-                      </li>
-                    </ul>
-                  </li>
-		  <li>
-                    <strong>[Sept 2024]: </strong>
-                    <ul>
-                      <li>
-			Check out our new <a href="https://arxiv.org/pdf/2409.05907">preprint</a> describing how to use activation steering to control refusal behavior in language models.
-                      </li>
-                    </ul>
-                  </li>
-		  <li>
-                    <strong>[Aug 2024]: </strong>
-                    <ul>
-                      <li>
-			Serving as a program committee member for <a href="https://aaai.org/conference/aaai/aaai-25/">AAAI 2025</a>.
-                      </li>
-                    </ul>
-                  </li>
-                  <li>
-                    <strong>[June 2024]: </strong>
-                    <ul>
-                      <li>
-                        Posted a <a href="https://arxiv.org/pdf/2406.11785">preprint</a> (submitted to <a href="https://2024.emnlp.org">EMNLP 2024</a>) on the development of black-box contrastive explanation methods for LLMs. We apply these methods to enable explainability in open-text generation, automated red-teaming, and conversational AI.
-                      </li>
-                      <li>
-                        Posted a <a href="https://arxiv.org/pdf/2403.15115">preprint</a> (submitted to <a href="https://2024.emnlp.org">EMNLP 2024</a>) on work proposing a set of conversational maxims for human-AI interactions. We demonstrate that some current language models possess an internal prioritization of principles that significantly impacts their ability to interpret the maxims.
-                      </li>
-                      <li>
-                        Served as program committee member for <a href="https://www.aies-conference.com/2024/">AIES 2024</a>.
-                      </li>
-                    </ul>
-                  </li>
-                  <li>
-                    <strong>[February 2024]: </strong>
-                    <ul>
-
-                      <li>
-                        Check out a <a href="https://arxiv.org/pdf/2403.06009"> preprint</a> of our paper "Detectors for Safe and Reliable LLMs: Implementations, Uses, and Limitations". We outline some of the ongoing efforts at IBM Research in building light-weight natural language classifiers.
-                      </li>
-                      <li>
-                        Served as program committee member for <a href="https://facctconference.org/2024/">FAccT 2024</a>, <a href="https://hcxai.jimdosite.com">HCXAI 2024</a>, <a href="https://chiwork.org">CHIWORK 2024</a>, and <a href="https://recsys.acm.org/recsys24/">RecSys 2024</a>.
-                      </li>
-                    </ul>
-                  <!--<li>
-                    <strong>[December 2023]: </strong>Our cookie consent work was featured in <a href="https://www.sciencefocus.com/news/declining-cookies-worse-for-privacy">BBC Science Focus</a>!
-                  </li>
-                  <li>
-                    <strong>[September 2023]: </strong>Our paper on the fairness of cookie consent was accepted to NeurIPS 2023! Check it out <a href="https://proceedings.neurips.cc/paper_files/paper/2023/file/6c473e69ba261200dd595d07494c1a73-Paper-Conference.pdf">here</a>.
-                  </li>
-                  <li><strong>[March 2023]: </strong>Served as program committee member for the upcoming <a href="https://hcxai.jimdosite.com"">ACM CHI Workshop on Human-Centered Perspectives in Explainable AI (HCXAI 2023)</a></li>
-                  <li><strong>[October 2022]: </strong>The <a href="https://cordis.europa.eu/project/id/101070568">AutoFair</a> project begins!</li>
-                  <li><strong>[August 2022]: </strong> Joined IBM Research as a research scientist on the human-centered AI team!</li>-->
-                </ul>
-
-            </div>
-            
-        </div>
-
 
     </div>
-    <!-- /.container -->
-    
-    <!-- Other people may like it too! -->
-    <a style="color:#b5bec9;font-size:0.8em; float:right;" href="https://github.com/mavroudisv/plain-academic">Plain Academic</a> 
-    
-</body>
 
+    <!-- Page footer for narrow screens (must be outside wrapper) -->
+    <footer class="page-footer">
+      <div class="theme-toggle-wrapper">
+        <span class="theme-toggle-icon sun"><i class="fa-solid fa-sun"></i></span>
+        <button class="theme-toggle" aria-label="Toggle dark mode" aria-checked="false" role="switch"></button>
+        <span class="theme-toggle-icon moon"><i class="fa-solid fa-moon"></i></span>
+      </div>
+      <p><small>Theme forked from <a href="https://github.com/orderedlist">orderedlist</a></small></p>
+    </footer>
+    
+    <script src="assets/events.js"></script>
+    <script src="assets/theme.js"></script>
+  </body>
 </html>
