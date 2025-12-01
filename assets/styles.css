@@ -448,7 +448,6 @@ footer p {
 .timeline-date i {
   margin-right: 4px;
   opacity: 0.8;
-  font-size: 0.85em
 }
 
 .timeline-title {
@@ -500,6 +499,26 @@ footer p {
   float: none;
   display: block;
   margin-bottom: 6px;
+}
+
+/* Clickable timeline box (when event has a link) */
+a.timeline-box-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
+}
+
+a.timeline-box-link:hover {
+  text-decoration: none;
+}
+
+a.timeline-box-link .timeline-title {
+  color: var(--text-primary);
+}
+
+a.timeline-box-link:hover .timeline-title {
+  color: var(--accent-color);
 }
 
 /* Tag styles */

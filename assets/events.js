@@ -5,10 +5,13 @@
 //   - type: "normal", "highlight", or with a tag like "paper", "code", "new", "talk"
 //   - link: (optional) URL for the title
 //   - future: (optional) If true, this event is phrased in future tense and will be
-//             hidden once its date has passed
+//             hidden once its date has passed (at end of day)
 //
 // Events are automatically sorted by date and the "Today" marker is inserted
-// only when there are upcoming future events to display
+// only when there are upcoming future events to display.
+//
+// The most recent tagged event in the past will automatically display as "New"
+// if it occurred within the last 3 months. Otherwise, it reverts to its original tag.
 
 const events = [
   {
@@ -41,37 +44,16 @@ const events = [
   },
   {
     date: "2025-10-01",
-    title: "Released the AI Steerability 360 toolkit",
-    description: "We have open sourced the steerability toolkit. Watch the repo for updates.",
+    title: "Open sourced the AI Steerability 360 toolkit",
+    description: "We have released the first version of our steerability toolkit. Keep an eye on the repo for updates.",
     type: "code",
     link: "https://github.com/IBM/AISteer360"
   },
   {
     date: "2025-05-02",
-    title: "Attended NAACL 2025",
+    title: "Poster @ NAACL 2025",
     description: "Presented our research on <a href='https://arxiv.org/abs/2411.12405'>evaluating the prompt steerability</a> of LLMs.",
     type: "normal",
-  },
-  {
-    date: "2025-04-01",
-    title: "Evaluating prompt steerability",
-    description: " ",
-    type: "paper",
-    link: ""
-  },
-  {
-    date: "2025-03-01",
-    title: "Localizing persona representations",
-    description: "AIES and INTERPLAY.",
-    type: "paper",
-    link: ""
-  },
-  {
-    date: "2025-02-01",
-    title: "Agentic systems theory",
-    description: " ",
-    type: "paper",
-    link: ""
   },
 ];
 
@@ -120,12 +102,17 @@ function renderTimeline() {
   });
 
   // Find the most recent tagged event in the past to mark as "new"
+  // Only if it occurred within the last 3 months
+  const threeMonthsAgo = new Date();
+  threeMonthsAgo.setMonth(threeMonthsAgo.getMonth() - 3);
+  
   const tagTypes = ['paper', 'code', 'talk'];
   const mostRecentTaggedPastEvent = sortedEvents.find(event => {
     const eventDate = new Date(event.date + 'T00:00:00');
     const isPast = eventDate < today;
+    const isWithinThreeMonths = eventDate >= threeMonthsAgo;
     const hasTag = tagTypes.includes(event.type);
-    return isPast && hasTag;
+    return isPast && isWithinThreeMonths && hasTag;
   });
 
   let todayMarkerInserted = false;
@@ -162,7 +149,8 @@ function renderTimeline() {
     itemDiv.className = `timeline-item${isHighlight ? ' highlight' : ''}`;
 
     let titleHTML = event.title;
-    if (event.link) {
+    // For non-highlighted items, keep the link on the title
+    if (event.link && !isHighlight) {
       titleHTML = `<a href="${event.link}">${event.title}</a>`;
     }
 
@@ -183,13 +171,26 @@ function renderTimeline() {
       : formatDate(event.date);
 
     if (isHighlight) {
-      itemDiv.innerHTML = `
-        <div class="timeline-box">
-          <div class="timeline-date">${dateHTML}</div>
-          <h3 class="timeline-title">${tagHTML}${titleHTML}</h3>
-          <p class="timeline-description">${event.description}</p>
-        </div>
+      // For highlighted items, make the whole box clickable if there's a link
+      const boxContent = `
+        <div class="timeline-date">${dateHTML}</div>
+        <h3 class="timeline-title">${tagHTML}${titleHTML}</h3>
+        <p class="timeline-description">${event.description}</p>
       `;
+      
+      if (event.link) {
+        itemDiv.innerHTML = `
+          <a href="${event.link}" class="timeline-box timeline-box-link">
+            ${boxContent}
+          </a>
+        `;
+      } else {
+        itemDiv.innerHTML = `
+          <div class="timeline-box">
+            ${boxContent}
+          </div>
+        `;
+      }
     } else {
       itemDiv.innerHTML = `
         <span class="timeline-date">${dateHTML}</span>
