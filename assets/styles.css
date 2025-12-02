@@ -156,6 +156,7 @@ body {
 h1, h2, h3, h4, h5, h6 {
   color: var(--text-primary);
   margin: 0 0 20px;
+  font-weight: 500;
 }
 
 p, ul, ol, table, pre, dl {
@@ -251,7 +252,7 @@ img {
 
 strong {
   color: var(--text-primary);
-  font-weight: 700;
+  font-weight: 600;
 }
 
 small {
@@ -298,7 +299,7 @@ footer p {
 
 header h1 {
   font-size: 24px;
-  font-weight: 700;
+  font-weight: 500;
 }
 
 header h1 a {
@@ -536,7 +537,7 @@ a.timeline-box-link .timeline-title {
 }
 
 a.timeline-box-link:hover .timeline-title {
-  color: var(--accent-color);
+  color: var(--text-primary);
 }
 
 /* Tag styles */
