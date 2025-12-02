@@ -298,8 +298,9 @@ footer p {
 }
 
 header h1 {
-  font-size: 24px;
+  font-size: 28px;
   font-weight: 500;
+  margin-top: 8px;
 }
 
 header h1 a {
@@ -314,6 +315,7 @@ header h1 a:hover {
 .profile-photo {
   width: 180px;
   border-radius: 3px;
+  margin-top: 12px;
   margin-bottom: 20px;
 }
 
@@ -373,6 +375,10 @@ header h1 a:hover {
 .about-section > h1:first-child,
 .news-section > h1:first-child {
   margin-top: 0;
+}
+
+.about-section > p:first-of-type {
+  margin-top: 25px;
 }
 
 .news-section {
