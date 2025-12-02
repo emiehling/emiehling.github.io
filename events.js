@@ -39,15 +39,22 @@ const events = [
   {
     date: "2025-10-10",
     title: "Talk @ INTERPLAY // COLM 2025",
-    description: "Gave a talk on our <a href='https://arxiv.org/abs/2505.24539'>paper</a> studying how personas are encoded in the representation space of LLMs.",
+    description: "Gave a talk on our localizing persona representations paper.",
     type: "normal",
   },
   {
-    date: "2025-10-01",
+    date: "2025-10-02",
     title: "Released AI Steerability 360",
     description: "A toolkit for general purpose steering of model behavior.",
     type: "code",
     link: "https://github.com/IBM/AISteer360"
+  },
+  {
+    date: "2025-09-08",
+    title: "Preprint available",
+    description: "New preprint on localizing persona representations in LLMs.",
+    type: "paper",
+    link: "https://arxiv.org/abs/2505.24539"
   },
   {
     date: "2025-07-29",
@@ -59,8 +66,15 @@ const events = [
   {
     date: "2025-05-02",
     title: "Poster @ NAACL 2025",
-    description: "Presented our research on <a href='https://arxiv.org/abs/2411.12405'>evaluating the prompt steerability</a> of LLMs.",
+    description: "Presented our prompt steerability work.",
     type: "normal",
+  },
+  {
+    date: "2025-02-15",
+    title: "Preprint available",
+    description: "New preprint on evaluating the prompt steerability of LLMs.",
+    type: "paper",
+    link: "https://arxiv.org/abs/2411.12405"
   },
 ];
 

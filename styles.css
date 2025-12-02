@@ -2,7 +2,8 @@
    ORDEREDLIST MINIMAL THEME - MODIFIED
    ===================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&display=swap');
+/*@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&display=swap');*/
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&display=swap');
 
 /* =====================================================
    CSS CUSTOM PROPERTIES (Light Mode - Default)
@@ -144,7 +145,8 @@
 body {
   background-color: var(--bg-primary);
   padding: 50px;
-  font: 14px/1.6 "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  /*font: 14px/1.6 "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;*/
+  font: 14px/1.6 "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
   color: var(--text-secondary);
   font-weight: 400;
   overflow-x: hidden;
