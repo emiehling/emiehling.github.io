@@ -3,7 +3,8 @@
    ===================================================== */
 
 /*@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&display=swap');*/
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&display=swap');
+/*@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,600&display=swap');*/
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&display=swap');
 
 /* =====================================================
    CSS CUSTOM PROPERTIES (Light Mode - Default)
@@ -157,6 +158,7 @@ h1, h2, h3, h4, h5, h6 {
   color: var(--text-primary);
   margin: 0 0 20px;
   font-weight: 500;
+  font-family: "Space Mono", monospace;
 }
 
 p, ul, ol, table, pre, dl {
@@ -468,6 +470,8 @@ footer p {
   color: var(--text-primary);
   margin: 0 0 6px 0;
   overflow: hidden;
+  font-family: "IBM Plex Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  font-weight: 400;
 }
 
 .timeline-title a {
