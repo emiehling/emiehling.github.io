@@ -37,6 +37,12 @@ const events = [
   },
   // past events below --
   {
+    date: "2025-12-02",
+    title: "Expo Demo @ NeurIPS 2025",
+    description: "Demoed our recently released steering and explainability toolkits.",
+    type: "normal",
+  },
+  {
     date: "2025-10-10",
     title: "Talk @ INTERPLAY // COLM 2025",
     description: "Gave a talk on our localizing persona representations paper.",
