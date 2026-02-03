@@ -14,28 +14,19 @@
 // if it occurred within the last 3 months. Otherwise, it reverts to its original tag.
 
 const events = [
+  // past events below --
   {
     date: "2026-01-27",
     title: "AAAI Workshop: Foundations of Agentic Systems Theory",
-    description: "Join us for the first iteration of our workshop aiming to build our understanding of why agentic systems work (or do not work). Visit the <a href='https://fast-workshop.github.io'>workshop website</a> for more information.",
+    description: "Hosted the first iteration of <a href='https://fast-workshop.github.io'>FAST</a> aiming to build our understanding of why agentic systems work (or do not work). Thank you to all of the participants!",
     type: "normal",
-    future: true
   },
   {
     date: "2026-01-21",
     title: "AAAI Lab: Learning to Steer Large Language Models",
-    description: "We're hosting a comprehensive lab session on how to steer LLMs in a more principled way. <a href='https://steerability.github.io/lab/'>Join us</a>!",
+    description: "Hosted a comprehensive <a href='https://steerability.github.io/lab/'>lab session</a> on how to steer LLMs in a more principled way.",
     type: "normal",
-    future: true
   },
-  {
-    date: "2025-12-02",
-    title: "NeurIPS Expo Demo",
-    description: "We will be demoing our recently released toolkits: AI Steerability 360 and In-Context Explainability 360. Swing by if you'll be at NeurIPS!",
-    type: "normal",
-    future: true
-  },
-  // past events below --
   {
     date: "2025-12-02",
     title: "Expo Demo @ NeurIPS 2025",
