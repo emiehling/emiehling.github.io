@@ -27,14 +27,7 @@
   --timeline-line: #ccc;
   --timeline-dot: #666;
   
-  --tag-new-bg: #fff3cd;
-  --tag-new-text: #856404;
-  --tag-paper-bg: #e8f4e8;
-  --tag-paper-text: #2e6b2e;
-  --tag-code-bg: #e3f2fd;
-  --tag-code-text: #1565c0;
-  --tag-talk-bg: #f3e5f5;
-  --tag-talk-text: #7b1fa2;
+  --bg-inset-hover: #e8e4db;
   
   --shadow-soft: rgba(0,0,0,0.06);
   --shadow-medium: rgba(0,0,0,0.08);
@@ -61,14 +54,7 @@
   --timeline-line: #444;
   --timeline-dot: #888;
   
-  --tag-new-bg: #3d3520;
-  --tag-new-text: #e0c67a;
-  --tag-paper-bg: #1e2e1e;
-  --tag-paper-text: #7ac77a;
-  --tag-code-bg: #1a2a3a;
-  --tag-code-text: #6eb5e8;
-  --tag-talk-bg: #2a1a2e;
-  --tag-talk-text: #c490d4;
+  --bg-inset-hover: #272727;
   
   --shadow-soft: rgba(0,0,0,0.2);
   --shadow-medium: rgba(0,0,0,0.3);
@@ -492,44 +478,17 @@ footer p {
   clear: both;
 }
 
-/* Highlighted box with inset style and hover transition */
+/* Highlighted box; shifts shade on hover */
 .timeline-item.highlight .timeline-box {
   background: var(--bg-inset);
   border: 1px solid var(--border-color);
   padding: 14px 16px;
   position: relative;
   margin-bottom: 4px;
-  box-shadow: inset 0 2px 4px var(--shadow-medium), inset 0 1px 2px var(--shadow-soft);
-  transition: all 0.25s ease-out;
 }
 
-/* Outset (raised) style on hover */
 .timeline-item.highlight .timeline-box:hover {
-  background: var(--bg-hover);
-  box-shadow: 0 2px 8px var(--shadow-medium), 0 4px 12px var(--shadow-soft);
-  transform: translateY(-2px);
-}
-
-.timeline-item.highlight .timeline-title {
-  padding-right: 0;
-}
-
-/* Header row with tag left, date right */
-.timeline-item.highlight .timeline-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 8px;
-}
-
-.timeline-item.highlight .timeline-header .timeline-date {
-  float: none;
-  margin: 0;
-  max-width: none;
-}
-
-.timeline-item.highlight .timeline-description {
-  clear: both;
+  background: var(--bg-inset-hover);
 }
 
 /* Clickable timeline box (when event has a link) */
@@ -546,42 +505,6 @@ a.timeline-box-link:hover {
 
 a.timeline-box-link .timeline-title {
   color: var(--text-primary);
-}
-
-a.timeline-box-link:hover .timeline-title {
-  color: var(--text-primary);
-}
-
-/* Tag styles */
-.tag {
-  display: inline-block;
-  font-size: 10px;
-  font-weight: bold;
-  text-transform: uppercase;
-  padding: 2px 6px;
-  border-radius: 2px;
-  margin-right: 6px;
-  vertical-align: middle;
-}
-
-.tag.new {
-  background: var(--tag-new-bg);
-  color: var(--tag-new-text);
-}
-
-.tag.paper {
-  background: var(--tag-paper-bg);
-  color: var(--tag-paper-text);
-}
-
-.tag.code {
-  background: var(--tag-code-bg);
-  color: var(--tag-code-text);
-}
-
-.tag.talk {
-  background: var(--tag-talk-bg);
-  color: var(--tag-talk-text);
 }
 
 /* Today divider with subtle pulsing diamond marker */

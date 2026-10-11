@@ -2,18 +2,29 @@
 //   - date: "YYYY-MM-DD" format
 //   - title: The event title (can include HTML)
 //   - description: Short description (can include HTML)
-//   - type: "normal", "highlight", or with a tag like "paper", "code", "new", "talk"
+//   - type: "normal" or "highlight" (highlighted events are shown in a box)
 //   - link: (optional) URL for the title
 //   - future: (optional) If true, this event is phrased in future tense and will be
 //             hidden once its date has passed (at end of day)
 //
 // Events are automatically sorted by date and the "Today" marker is inserted
 // only when there are upcoming future events to display.
-//
-// The most recent tagged event in the past will automatically display as "New"
-// if it occurred within the last 3 months. Otherwise, it reverts to its original tag.
 
 const events = [
+  {
+    date: "2026-12-13",
+    title: "NeurIPS 2026 Competition:<br>The Steerability Challenge",
+    description: "An open competition to steer models to be less dishonest without degrading general capabilities. Final submissions due Nov 21. Workshop on Dec 13 at NeurIPS in Paris.",
+    type: "highlight",
+    link: "https://steerability.github.io/competition/"
+  },
+  {
+    date: "2026-12-12",
+    title: "FAST @ NeurIPS 2026",
+    description: "The second iteration of the Foundations of Agentic Systems Theory workshop. Held at NeurIPS in Paris.",
+    type: "highlight",
+    link: "https://fast-workshop.github.io"
+  },
   // past events below --
   {
     date: "2026-01-27",
@@ -26,52 +37,6 @@ const events = [
     title: "AAAI Lab: Learning to Steer Large Language Models",
     description: "Hosted a comprehensive <a href='https://steerability.github.io/lab/'>lab session</a> on how to steer LLMs in a more principled way.",
     type: "normal",
-  },
-  {
-    date: "2025-12-02",
-    title: "Expo Demo @ NeurIPS 2025",
-    description: "Demoed our recently released steering and explainability toolkits.",
-    type: "normal",
-  },
-  {
-    date: "2025-10-10",
-    title: "Talk @ INTERPLAY // COLM 2025",
-    description: "Gave a talk on our localizing persona representations paper.",
-    type: "normal",
-  },
-  {
-    date: "2025-10-02",
-    title: "Released AI Steerability 360",
-    description: "A toolkit for general purpose steering of model behavior.",
-    type: "code",
-    link: "https://github.com/IBM/AISteer360"
-  },
-  {
-    date: "2025-09-08",
-    title: "Preprint available",
-    description: "New preprint on localizing persona representations in LLMs.",
-    type: "paper",
-    link: "https://arxiv.org/abs/2505.24539"
-  },
-  {
-    date: "2025-07-29",
-    title: "Released In-Context Explainability 360",
-    description: "A toolkit for explaining model outputs with respect to model inputs.",
-    type: "code",
-    link: "https://github.com/IBM/ICX360"
-  },
-  {
-    date: "2025-05-02",
-    title: "Poster @ NAACL 2025",
-    description: "Presented our prompt steerability work.",
-    type: "normal",
-  },
-  {
-    date: "2025-02-15",
-    title: "Preprint available",
-    description: "New preprint on evaluating the prompt steerability of LLMs.",
-    type: "paper",
-    link: "https://arxiv.org/abs/2411.12405"
   },
 ];
 
@@ -119,20 +84,6 @@ function renderTimeline() {
     return eventDate >= today;
   });
 
-  // Find the most recent tagged event in the past to mark as "new"
-  // Only if it occurred within the last 3 months
-  const threeMonthsAgo = new Date();
-  threeMonthsAgo.setMonth(threeMonthsAgo.getMonth() - 3);
-  
-  const tagTypes = ['paper', 'code', 'talk'];
-  const mostRecentTaggedPastEvent = sortedEvents.find(event => {
-    const eventDate = new Date(event.date + 'T00:00:00');
-    const isPast = eventDate < today;
-    const isWithinThreeMonths = eventDate >= threeMonthsAgo;
-    const hasTag = tagTypes.includes(event.type);
-    return isPast && isWithinThreeMonths && hasTag;
-  });
-
   let todayMarkerInserted = false;
 
   sortedEvents.forEach((event, index) => {
@@ -148,19 +99,7 @@ function renderTimeline() {
       todayMarkerInserted = true;
     }
 
-    // Determine the display type (override to "new" for most recent tagged past event)
-    let displayType = event.type;
-    const isMostRecentTagged = mostRecentTaggedPastEvent && 
-      event.date === mostRecentTaggedPastEvent.date && 
-      event.title === mostRecentTaggedPastEvent.title;
-    
-    if (isMostRecentTagged) {
-      displayType = 'new';
-    }
-
-    // Determine if this is a highlighted item (has a tag type)
-    const isHighlight = ['paper', 'code', 'new', 'talk', 'highlight'].includes(displayType);
-    const hasTag = ['paper', 'code', 'new', 'talk'].includes(displayType);
+    const isHighlight = event.type === 'highlight';
 
     // Build the event HTML
     const itemDiv = document.createElement('div');
@@ -172,53 +111,24 @@ function renderTimeline() {
       titleHTML = `<a href="${event.link}">${event.title}</a>`;
     }
 
-    let tagHTML = '';
-    if (hasTag) {
-      const tagLabels = {
-        'paper': 'Paper',
-        'code': 'Code', 
-        'new': 'New',
-        'talk': 'Talk'
-      };
-      tagHTML = `<span class="tag ${displayType}">${tagLabels[displayType]}</span>`;
-    }
-
     // Add clock icon for future events
     const dateHTML = isFutureEvent 
       ? `<i class="fa-regular fa-clock"></i> ${formatDate(event.date)}`
       : formatDate(event.date);
 
+    const content = `
+      <span class="timeline-date">${dateHTML}</span>
+      <h3 class="timeline-title">${titleHTML}</h3>
+      <p class="timeline-description">${event.description}</p>
+    `;
+
     if (isHighlight) {
       // For highlighted items, make the whole box clickable if there's a link
-      // Layout: tag (left) + date (right) on top row, title below
-      const boxContent = `
-        <div class="timeline-header">
-          ${tagHTML}
-          <span class="timeline-date">${dateHTML}</span>
-        </div>
-        <h3 class="timeline-title">${titleHTML}</h3>
-        <p class="timeline-description">${event.description}</p>
-      `;
-      
-      if (event.link) {
-        itemDiv.innerHTML = `
-          <a href="${event.link}" class="timeline-box timeline-box-link">
-            ${boxContent}
-          </a>
-        `;
-      } else {
-        itemDiv.innerHTML = `
-          <div class="timeline-box">
-            ${boxContent}
-          </div>
-        `;
-      }
+      itemDiv.innerHTML = event.link
+        ? `<a href="${event.link}" class="timeline-box timeline-box-link">${content}</a>`
+        : `<div class="timeline-box">${content}</div>`;
     } else {
-      itemDiv.innerHTML = `
-        <span class="timeline-date">${dateHTML}</span>
-        <h3 class="timeline-title">${titleHTML}</h3>
-        <p class="timeline-description">${event.description}</p>
-      `;
+      itemDiv.innerHTML = content;
     }
 
     timeline.appendChild(itemDiv);
