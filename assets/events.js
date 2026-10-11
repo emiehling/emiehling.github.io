@@ -14,14 +14,14 @@ const events = [
   {
     date: "2026-12-13",
     title: "NeurIPS 2026 Competition:<br>The Steerability Challenge",
-    description: "An open competition to steer models to be less dishonest without degrading general capabilities. Final submissions due Nov 21. Workshop on Dec 13 at NeurIPS in Paris.",
+    description: "Organizing an open competition to steer models to be less dishonest without degrading general capabilities. Final submissions due Nov 21. Workshop on Dec 13 at NeurIPS in Paris.",
     type: "highlight",
     link: "https://steerability.github.io/competition/"
   },
   {
     date: "2026-12-12",
     title: "FAST @ NeurIPS 2026",
-    description: "The second iteration of the Foundations of Agentic Systems Theory workshop. Held at NeurIPS in Paris.",
+    description: "Chair for the second iteration of the Foundations of Agentic Systems Theory workshop to be held at NeurIPS in Paris.",
     type: "highlight",
     link: "https://fast-workshop.github.io"
   },
